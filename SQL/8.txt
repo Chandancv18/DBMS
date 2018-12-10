@@ -44,10 +44,10 @@ foreign key(loannumber) references loan(loannumber)
 
 //add values
 
-insert into branch values('sbi','bangalore',2000000.0);
-insert into branch values('uco','hyderabad',100000.0);
-insert into branch values('icici','mumbai',15000.0);
-insert into branch values('axis','delhi',250000.0);
+insert into branch values('sbi','Brooklyn',2000000.0);
+insert into branch values('uco','Horizon',100000.0);
+insert into branch values('icici','Dallas',15000.0);
+insert into branch values('axis','Frankfurt',250000.0);
 
 insert into account values(101,'sbi', 200000);
 insert into account values(102,'sbi',1000);
@@ -58,13 +58,13 @@ insert into account values(302,'icici',750);
 insert into account values(401,'axis',150000);
 insert into account values(402,'axis',10000);
 
-insert into customer values("Amy","mgroad","bengaluru");
-insert into customer values("Bob","cvraman road","mumbai");
-insert into customer values("Carl","magic cross","hyderabad");
-insert into customer values("Duke","5th main","delhi");
-insert into customer values("El","1st cross","hyderabad");
-insert into customer values("Fin","8th main","hyderabad");
-insert into customer values("Gigi","kings road","hyderabad");
+insert into customer values("Amy","mgroad","Brooklyn");
+insert into customer values("Bob","cvraman road","Dallas");
+insert into customer values("Carl","magic cross","Horizon");
+insert into customer values("Duke","5th main","Frankfurt");
+insert into customer values("El","1st cross","Horizon");
+insert into customer values("Fin","8th main","Horizon");
+insert into customer values("Gigi","kings road","Horizon");
 
 insert into depositor values("Amy",101);
 insert into depositor values("Bob",201);
@@ -89,7 +89,7 @@ insert into borrower values("Bob",6);
 
 select b.customername,l.loannumber,l.amount 
 from borrower b,loan l 
-where l.branchname='icici' and l.loannumber=b.loannumber;
+where l.branchname='sbi' and l.loannumber=b.loannumber;
 
 //To find all customers who have both a loan and an account at the bank.
 
