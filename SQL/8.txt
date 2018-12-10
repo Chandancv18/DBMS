@@ -104,6 +104,13 @@ from account a,depositor d
 where a.accno=d.accno  
 group by a.branchname;
 
+//Delete the customers with no account
+
+select *
+from customer
+where customername not in(select customername from borrower)
+union(select customername from depositer)
+
 //Find the branch where the average account balance is more than Rs.13000
 
 select branchname  
