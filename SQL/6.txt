@@ -75,24 +75,29 @@ insert  into PARTICIPATED values('3', 'KA03',1000,1700);
 insert  into PARTICIPATED values('4', 'KA02',1,100);
 
 //COUNT the  no. of  cars participated in accident.
+
 Select count(*) as no_of_cars 
 from PARTICIPATED;
 
 //Find the total number of people who owned cars that were involved in accidents in 2003.
+
 Select count(*) 
 from  PARTICIPATED,ACCIDENT
 where Prepno=Repno and Date like ’%03’;
 
 //Display the driver name with their car models.
+
 Select Pname,Model
 from PERSON,CAR,OWNS
 where Did=Odid and Regno=Oregno;
 
 //Display the accident location where accident Regno is 5.
+
 Select Loc
 from ACCIDENT,CAR,PARTICIPATED 
 where Prepno=Repno and Pregno=Regno and Regno='KA05';
 
 //DELETE the accident record where report-number is 4.
+
 Delete from ACCIDENT
 where Repno=4;
