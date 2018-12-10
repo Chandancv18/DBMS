@@ -82,7 +82,7 @@ where Did between 2 and 10;
 //Display the driver details whose names are ‘john’ and ‘Antony’ (using in)
 
 Select * from PERSON
-where  Pname='Antony' or  Pname='John';
+where  Pname in ('Antony','John');
 
 //Find the total number of people who owned car ‘Maruthi’
 
