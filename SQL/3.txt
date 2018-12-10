@@ -1,0 +1,110 @@
+//create tables
+
+create table author(
+author_id   	int primary key,
+name        	varchar(20),
+city        		varchar(20),
+country     	varchar(20) 
+);
+
+create table publisher(
+publisher_id   	 int primary key,
+name           	varchar(20),
+city            	varchar(20),
+country        	 varchar(20) 
+);
+
+create table category(
+category_id	 int primary key,
+description 	varchar(30)
+);
+
+create table catalog(
+book_id         	int primary key,
+title           	varchar(25),
+author_id       	int,
+publisher_id    	int,
+category_id     	int,
+year            int,
+price           int,
+foreign key(author_id)      	references  	author(author_id),
+foreign key(publisher_id)   	references  	publisher(publisher_id),
+foreign key(category_id)    	references  	category(category_id)
+);
+
+create table order_details( 
+order_no    int,
+book_id     int,
+quantity    int,
+foreign key(book_id) references catalog(book_id) 
+);
+
+//inserting values
+
+INSERT INTO AUTHOR VALUES(1,"Amr","Bengaluru","INDIA");
+INSERT INTO AUTHOR VALUES(2,"Bill","Chennai","INDIA");
+INSERT INTO AUTHOR VALUES(3,"Cat","Dhaka","Bangladesh");
+INSERT INTO AUTHOR VALUES(4,"Drake","New York","USA");
+INSERT INTO AUTHOR VALUES(5,"Elle","Los Angeles","USA");
+
+INSERT INTO PUBLISHER VALUES(11,"AA","Bengaluru","INDIA");
+INSERT INTO PUBLISHER VALUES(22,"BB","Chennai","INDIA");
+INSERT INTO PUBLISHER VALUES(33,"C_C","New York","USA");
+INSERT INTO PUBLISHER VALUES(44,"McGraw-Hill","Los Angeles","USA");
+INSERT INTO PUBLISHER VALUES(55,"E_E","Dhaka","Bangladesh");
+
+INSERT INTO CATEGORY VALUES(111,"Horror");
+INSERT INTO CATEGORY VALUES(222,"Comedy");
+INSERT INTO CATEGORY VALUES(333,"Melancholy");
+INSERT INTO CATEGORY VALUES(444,"Adventure");
+INSERT INTO CATEGORY VALUES(555,"Drama");
+
+INSERT INTO CATALOG VALUES(1,"As You Like It",4,44,555,1998,1000);
+INSERT INTO CATALOG VALUES(2,"Golmaal",2,55,222,2002,900);
+INSERT INTO CATALOG VALUES(3,"IT",1,22,111,2005,2000);
+INSERT INTO CATALOG VALUES(4,"DBZ",3,33,222,1988,null);
+INSERT INTO CATALOG VALUES(5,"Grudge",5,11,111,2009, null);
+INSERT INTO CATALOG VALUES(6,"Ghoul",1,22,333,2008,2000);
+INSERT INTO CATALOG VALUES(7,"Van Helsing",1,33,111,2009,3000);
+INSERT INTO CATALOG VALUES(8,"Merchant Of Venice",2,11,555,2008,2200);
+INSERT INTO CATALOG VALUES(9,"Pokemon",3,22,444,2010,2070);
+
+INSERT INTO ORDER_DETAILS VALUES(1001,1,200);
+INSERT INTO ORDER_DETAILS VALUES(1002,2,300);
+INSERT INTO ORDER_DETAILS VALUES(1003,3,250);
+INSERT INTO ORDER_DETAILS VALUES(1004,4,300);
+
+//Get the names of all books that are in the BOOK table and for which an order is placed.
+
+select c.title 
+from catalog c, order_details o 
+where c.book_id = o.book_id;
+
+//Get publisher, the average, maximum and minimum book prices of all publisher who have more than 2 books listed in catalog table.
+
+select p.publisher_id , p.name, avg(c.price), max(c.price), min(c.price),count(*)
+from catalog c, publisher p
+where p.publisher_id = c.publisher_id 
+group by c.publisher_id, p.name 
+having count(*)>2;
+
+//Get all the books details whose price is greater than 300 in descending order of price.
+         
+select * 
+from catalog 
+where price > 300 
+order by price desc
+
+//Get the titles of all the books in the CATALOG table whose price is greater than the average price.
+
+select title 
+from catalog 
+where price > (select avg(price)  from catalog);
+
+//Get the names of all authors who have more than two books in the catalog.
+
+select a.name,count(*)  
+from author a,catalog c  
+where a.author_id = c.author_id
+group by a.name 
+having count(*)>2;
