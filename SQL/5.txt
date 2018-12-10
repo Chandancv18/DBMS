@@ -19,8 +19,8 @@ Loc VARCHAR(20));
 Odid  VARCHAR(10),
 Oregno VARCHAR(10),
 Primary Key(Odid,Oregno),
-Foreign key(Odid) references PERSON1(Did) on delete cascade,
-Foreign key(Oregno) references CAR1(Regno) on delete cascade);
+Foreign key(Odid) references PERSON(Did) on delete cascade,
+Foreign key(Oregno) references CAR(Regno) on delete cascade);
  
 create table PARTICIPATED (
 Pdid VARCHAR(10),
@@ -28,9 +28,9 @@ Pregno VARCHAR(10),
 Prepno INT,
 Damage INT,
 Primary key(Pdid, Pregno, Prepno),
-Foreign key (Pdid) references PERSON1(Did) on delete cascade, 
-Foreign key (Pregno) references CAR1(Regno) on delete cascade,
-Foreign key(Prepno) references ACCIDENT1(Repno) on delete cascade);
+Foreign key (Pdid) references PERSON(Did) on delete cascade, 
+Foreign key (Pregno) references CAR(Regno) on delete cascade,
+Foreign key(Prepno) references ACCIDENT(Repno) on delete cascade);
 
 
 //insert values
