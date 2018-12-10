@@ -108,8 +108,8 @@ group by a.branchname;
 
 select *
 from customer
-where customername not in(select customername from borrower)
-union(select customername from depositer)
+where customername not in((select customername from borrower)
+union(select customername from depositer))
 
 //Find the branch where the average account balance is more than Rs.13000
 
