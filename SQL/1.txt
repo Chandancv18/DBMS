@@ -106,9 +106,9 @@ having c>=3;
 
 //List the customer names who have not ordered for item no. 10.
 
-Select Cname 
-from CUSTOMER,ORDER,ORDER_ITEM 
-where Ocno=Cno and Ono=Iono and Iono=10;
+Select distinct(Cname) 
+from ORDER,CUSTOMER,ORDER_ITEM 
+where Ono=Iono and Ocno=Cno and Iono!=10;
 
 //Delete the items with no orders
 
