@@ -75,24 +75,29 @@ insert  into PARTICIPATED values('3', 'KA03',1000,1700);
 insert  into PARTICIPATED values('4', 'KA02',1,100);
 
 //Produce a list of drivers whose driver-id is between 2 & 10.
+
 select * from PERSON 
 where Did between 2 and 10;
 
 //Display the driver details whose names are ‘john’ and ‘Antony’ (using in)
+
 Select * from PERSON
 where  Pname='Antony' or  Pname='John';
 
 //Find the total number of people who owned car ‘Maruthi’
+
 Select count(*)
 from CAR
 where Model='Maruthi';
 
 //Update the manufacturing year of a specific  CAR model  to 2004.
+
 Update CAR
 set year=2004 
 where Model= 'Tata';
 SELECT * FROM CAR;
 
 //DELETE the CAR whose Regno is 5.
+
 Delete from CAR
 where Regno='KA05';
