@@ -76,7 +76,7 @@ Insert into ORDER_ITEM values(5,2,1);
  
 Insert into WAREHOUSE values(1,’Bangalore’);
 Insert into WAREHOUSE values(2,’Bangalore’);
-Insert into WAREHOUSE values(3,’Mysore’);
+Insert into WAREHOUSE values(3,’abc’);
 Insert into WAREHOUSE values(4,’Mangalore’);
  
 Insert into SHIPMENT values(1,1,'03-Jun-2016');
