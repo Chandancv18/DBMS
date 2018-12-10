@@ -1,4 +1,5 @@
 //create tables
+
 create table PERSON (
 Did VARCHAR(10) PRIMARY KEY,
 Pname VARCHAR(10),
@@ -33,6 +34,7 @@ Foreign key(Prepno) references ACCIDENT1(Repno) on delete cascade);
 
 
 //insert values
+
 insert into PERSON values('1','Steve','Frankfurt');
 insert into PERSON values('2','Dustin','Perryridge');
 insert into PERSON values('3','Mike','Brooklyn');
